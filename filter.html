@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Restaurants</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <h1 style="text-align: center; color: #333;">Filter Restaurants</h1>
+    
+    <div style="text-align: center; margin-bottom: 20px;">
+        <label for="cuisine" style="font-weight: bold;">Choose Cuisine:</label>
+        <select id="cuisine" onchange="filterRestaurants()" style="padding: 10px; margin-left: 10px;">
+            <option value="all">All</option>
+            <option value="italian">Italian</option>
+            <option value="chinese">Chinese</option>
+            <option value="indian">Indian</option>
+            <option value="mexican">Mexican</option>
+        </select>
+    </div>
+
+    <ul id="restaurant-list" style="list-style-type: none; padding: 0; max-width: 400px; margin: auto;">
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Pasta Place - Italian</li>
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Szechuan Delight - Chinese</li>
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Curry House - Indian</li>
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Taco Town - Mexican</li>
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Pizza Palace - Italian</li>
+        <li style="background: #fff; padding: 15px; margin: 10px 0; border-radius: 5px;">Dim Sum Spot - Chinese</li>
+    </ul>
+
+    <script>
+        function filterRestaurants() {
+            var select = document.getElementById("cuisine");
+            var value = select.value;
+            var restaurants = document.querySelectorAll("#restaurant-list li");
+
+            restaurants.forEach(function(restaurant) {
+                if (value === "all" || restaurant.textContent.toLowerCase().includes(value)) {
+                    restaurant.style.display = "block";
+                } else {
+                    restaurant.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
